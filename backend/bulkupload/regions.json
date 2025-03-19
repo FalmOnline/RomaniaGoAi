@@ -1,0 +1,15 @@
+[
+    {
+      "Title": "Bucovina",
+      "highlights": ["Painted Monasteries", "Rolling Hills", "Bucolic Charm"],
+      "Description": "Famous for its **UNESCO-listed Painted Monasteries**, such as **Voroneț** (known for its vivid blue frescoes), **Bucovina** invites you to explore its spiritual and artistic heritage. The rolling hills and quaint villages offer a serene escape, while local dishes like **sarmale** and **smoked cheese** tantalize your taste buds.",
+      "image": "/images/bucovina.jpg"
+    },
+    {
+      "Title": "Maramureș",
+      "highlights": ["Traditional Villages", "Wooden Churches", "Folklore"],
+      "Description": "Step back in time in **Maramureș**, where life flows to the rhythm of traditions preserved for centuries. Admire the **UNESCO-listed wooden churches** with intricate carvings, or take a ride on the **Mocănița Steam Train** through breathtaking landscapes. Experience authentic Romanian culture with locals who still wear traditional clothing and celebrate festivals with vibrant folk music and dance.",
+      "image": "/images/maramures.jpg"
+    }
+  ]
+  

@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "monuments",
+  "info": {
+    "singularName": "monument",
+    "pluralName": "monuments",
+    "displayName": "Monuments"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "blocks"
+    },
+    "Image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "tags": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tag.tag",
+      "inversedBy": "monuments"
+    },
+    "attractions": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::attraction.attraction",
+      "inversedBy": "monuments"
+    }
+  }
+}

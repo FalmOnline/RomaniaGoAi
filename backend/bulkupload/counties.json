@@ -1,0 +1,362 @@
+
+[
+    {
+    "Title": "Alba",
+    "Region": ["Transilvania"],
+    "highlights": ["Apuseni Mountains", "Scarisoara Ice Cave", "Alba Carolina Fortress", "Rimet Monastery"],
+    "Description": "Alba County is a picturesque gem nestled in the heart of Transilvania, known for its breathtaking Apuseni Mountains and historical landmarks. The Alba Carolina Fortress is a star-shaped citadel offering panoramic views and immersive history. Nature lovers can explore the Scarisoara Ice Cave, one of the oldest ice caves in the world.",
+    "image": "/images/alba.jpg"
+    },
+    {
+    "Title": "Arad",
+    "Region": ["Crisana", "Banat"],
+    "highlights": ["Mures River", "Arad Fortress", "Natural Parks", "Vineyards"],
+    "Description": "Located at the crossroads of Crisana and Banat, Arad County is a blend of natural beauty and cultural heritage. Visitors can stroll along the Mures River, explore the Arad Fortress, and enjoy wine tastings at the local vineyards.",
+    "image": "/images/arad.jpg"
+    },
+    {
+    "Title": "Argeș",
+    "Region": ["Muntenia"],
+    "highlights": ["Vidraru Lake", "Transfagarasan Highway", "Curtea de Arges Monastery", "Poenari Castle"],
+    "Description": "Arges County is a dream destination for adventure seekers and history buffs. The world-famous Transfagarasan Highway winds through scenic mountains, while Vidraru Lake offers serene views. Don’t miss the Poenari Castle, linked to the legend of Vlad the Impaler.",
+    "image": "/images/arges.jpg"
+    },
+    {
+    "Title": "Bacău",
+    "Region": ["Moldova"],
+    "highlights": ["Bacau City", "Slanic Moldova Spa Resort", "Ceahlau National Park"],
+    "Description": "Bacau County offers a serene retreat in the Moldova region, famous for its lush landscapes and spa resorts. Ceahlau National Park is a haven for hikers and nature enthusiasts, while Slanic Moldova Spa is perfect for relaxation and wellness.",
+    "image": "/images/bacau.jpg"
+    },
+    {
+    "Title": "Bihor",
+    "Region": ["Crișana"],
+    "highlights": ["Bear’s Cave", "Oradea Art Nouveau Architecture", "Baile Felix Thermal Spa"],
+    "Description": "Bihor County is renowned for its natural wonders and architectural beauty. Discover the Bear’s Cave, a prehistoric marvel, and relax in the healing waters of Baile Felix. Oradea’s stunning Art Nouveau buildings are a must-see.",
+    "image": "/images/bihor.jpg"
+    },
+    {
+    "Title": "Bistrita-Nasaud",
+    "Region": ["Transilvania"],
+    "highlights": ["Rodnei Mountains", "Dracula’s Castle (fictional link)", "Prislop Pass"],
+    "Description": "Bistrita-Nasaud County is steeped in legend, believed to be linked to Dracula’s story. With its scenic Rodnei Mountains, stunning hiking trails, and quaint villages, it’s a perfect escape into Transylvanian folklore.",
+    "image": "/images/bistrita-nasaud.jpg"
+    },
+    {
+    "Title": "Botosani",
+    "Region": ["Moldova"],
+    "highlights": ["Eminescu’s Memorial House", "Ipotesti", "Stefan cel Mare Church"],
+    "Description": "The birthplace of Romania’s national poet Mihai Eminescu, Botosani County is a place of cultural significance. Visitors can explore Eminescu’s Memorial House in Ipotesti and marvel at the stunning medieval churches.",
+    "image": "/images/botosani.jpg"
+    },
+    {
+    "Title": "Brasov",
+    "Region": ["Transilvania"],
+    "highlights": ["Brasov City", "Bran Castle (Dracula’s Castle)", "Piatra Craiului Mountains"],
+    "Description": "Brasov County is one of Romania’s most famous tourist destinations. The medieval city of Brasov enchants visitors with its colorful streets and Saxon architecture, while the legendary Bran Castle draws Dracula enthusiasts from around the world.",
+    "image": "/images/brasov.jpg"
+    },
+    {
+    "Title": "Braila",
+    "Region": ["Muntenia"],
+    "highlights": ["Braila City", "Danube River", "Big Island of Braila Nature Park"],
+    "Description": "Braila County, located on the Danube River’s shores, is a hidden treasure for ecotourism. Visitors can explore the pristine wilderness of the Big Island of Braila Nature Park and enjoy river cruises along the Danube.",
+    "image": "/images/braila.jpg"
+    },
+    {
+    "Title": "Buzau",
+    "Region": ["Muntenia"],
+    "highlights": ["Mud Volcanoes", "Berca Village", "Ciolanu Monastery"],
+    "Description": "Buzau County’s famous Mud Volcanoes are a geological wonder, attracting thousands of tourists each year. Visitors can also explore Ciolanu Monastery, a place of serenity nestled in lush forests.",
+    "image": "/images/buzau.jpg"
+    },
+
+{
+    "Title": "Calarasi",
+    "Region": ["Muntenia"],
+    "highlights": ["Danube River", "Wildlife Reserves", "Water Sports"],
+    "Description": "Calarasi County, located on the Danube’s banks, is a hub for ecotourism. Water sports, fishing, and birdwatching in its wildlife reserves make it a perfect destination for nature enthusiasts.",
+    "image": "/images/calarasi.jpg"
+    },
+    {
+    "Title": "Caras-Severin",
+    "Region": ["Banat"],
+    "highlights": ["Bigar Waterfall", "Cheile Nerei-Beusnita National Park", "Semenic Mountains"],
+    "Description": "Caras-Severin County is known for its pristine natural beauty. Hikers and adventure lovers flock to the Semenic Mountains and the spectacular Cheile Nerei Gorges. The Bigar Waterfall, once voted the world’s most beautiful waterfall, is a must-see.",
+    "image": "/images/caras-severin.jpg"
+    },
+    {
+    "Title": "Cluj",
+    "Region": ["Transilvania"],
+    "highlights": ["Cluj-Napoca City", "Turda Salt Mine", "Cheile Turzii Gorge"],
+    "Description": "Cluj County is the beating heart of Transilvania. Its vibrant city, Cluj-Napoca, is known for its youthful atmosphere and art scene. Nature lovers can explore the stunning Cheile Turzii Gorge or the mystical Turda Salt Mine.",
+    "image": "/images/cluj.jpg"
+    },
+    {
+    "Title": "Constanta",
+    "Region": ["Dobrogea"],
+    "highlights": ["Mamaia Beach", "Constanta Casino", "Black Sea Coast"],
+    "Description": "Constanta County is Romania’s seaside escape, home to golden beaches and the famous resort of Mamaia. The Constanta Casino, a symbol of Romania’s Belle Époque, adds historic charm to this vibrant seaside destination.",
+    "image": "/images/constanta.jpg"
+    },
+    {
+    "Title": "Covasna",
+    "Region": ["Transilvania"],
+    "highlights": ["Mineral Water Springs", "Traditional Szekler Villages", "Balvanyos Resort"],
+    "Description": "Covasna County is known as the ‘Land of Mineral Waters,’ boasting natural springs with therapeutic properties. Visitors can explore Szekler culture in traditional villages or relax at the Balvanyos Resort.",
+    "image": "/images/covasna.jpg"
+    },
+    {
+    "Title": "Dambovita",
+    "Region": ["Muntenia"],
+    "highlights": ["Chindia Tower", "Pucioasa Spa", "Bucegi Mountains"],
+    "Description": "Dambovita County offers a mix of history, wellness, and nature. Visit the iconic Chindia Tower in Targoviste, explore the Bucegi Mountains, or rejuvenate at the Pucioasa Spa, known for its therapeutic waters.",
+    "image": "/images/dambovita.jpg"
+    },
+    {
+    "Title": "Dolj",
+    "Region": ["Oltenia"],
+    "highlights": ["Craiova Art Museum", "Nicolae Romanescu Park", "Danube River"],
+    "Description": "Dolj County, located in the Oltenia region, is a cultural and artistic hub. Visitors can explore the Craiova Art Museum, stroll through the vast Nicolae Romanescu Park, or relax by the Danube River.",
+    "image": "/images/dolj.jpg"
+    },
+    {
+    "Title": "Galati",
+    "Region": ["Moldova"],
+    "highlights": ["Danube River Promenade", "Natural Science Museum", "Botanical Garden"],
+    "Description": "Galati County is a riverside retreat in the Moldova region, offering scenic walks along the Danube River Promenade. The Natural Science Museum and Botanical Garden are perfect for family outings.",
+    "image": "/images/galati.jpg"
+    },
+    {
+    "Title": "Giurgiu",
+    "Region": ["Muntenia"],
+    "highlights": ["Friendship Bridge", "Danube River", "Comana Nature Park"],
+    "Description": "Giurgiu County, located on the Danube River, is a gateway to Bulgaria via the Friendship Bridge. Visitors can explore the Comana Nature Park, a haven for birdwatching and eco-tourism.",
+    "image": "/images/giurgiu.jpg"
+    },
+    {
+    "Title": "Gorj",
+    "Region": ["Oltenia"],
+    "highlights": ["Endless Column by Brancusi", "Targu Jiu City", "Defileul Jiului National Park"],
+    "Description": "Gorj County is famous for its connection to Constantin Brancusi, one of Romania’s greatest sculptors. Visitors can see his renowned ‘Endless Column’ in Targu Jiu and explore the stunning Defileul Jiului National Park.",
+    "image": "/images/gorj.jpg"
+    },
+    {
+"Title": "Harghita",
+"Region": ["Transilvania"],
+"highlights": ["Lake Saint Ana", "Harghita Mountains", "Mineral Springs"],
+"Description": "Harghita County is a haven for nature lovers, with its stunning Lake Saint Ana, the only volcanic lake in Romania. Visitors can hike through the Harghita Mountains or relax in the area’s therapeutic mineral springs.",
+"image": "/images/harghita.jpg"
+},
+{
+"Title": "Hunedoara",
+"Region": ["Transilvania"],
+"highlights": ["Corvin Castle", "Dacian Fortresses", "Retezat National Park"],
+"Description": "Hunedoara County is a treasure trove of history and natural beauty. Explore the majestic Corvin Castle, discover ancient Dacian fortresses, or venture into the rugged wilderness of Retezat National Park.",
+"image": "/images/hunedoara.jpg"
+},
+{
+"Title": "Ialomita",
+"Region": ["Muntenia"],
+"highlights": ["Slobozia City", "Ialomita River", "Amara Lake Resort"],
+"Description": "Ialomita County offers serene getaways and rich historical sites. Visit the peaceful Amara Lake Resort, explore the cultural landmarks of Slobozia, or relax by the Ialomita River.",
+"image": "/images/ialomita.jpg"
+},
+{
+"Title": "Iasi",
+"Region": ["Moldova"],
+"highlights": ["Palace of Culture", "Botanical Garden", "Copou Park"],
+"Description": "Iasi County is a cultural and academic hub of Romania. Home to the iconic Palace of Culture, it boasts beautiful green spaces like Copou Park and the oldest botanical garden in Romania.",
+"image": "/images/iasi.jpg"
+},
+{
+"Title": "Ilfov",
+"Region": ["Muntenia"],
+"highlights": ["Snagov Monastery", "Mogosoaia Palace", "Lakes and Forests"],
+"Description": "Ilfov County, surrounding Romania’s capital Bucharest, is known for its tranquil retreats. Visit Snagov Monastery, rumored to be the burial place of Vlad the Impaler, or explore the lush landscapes of lakes and forests.",
+"image": "/images/ilfov.jpg"
+},
+{
+"Title": "Maramures",
+"Region": ["Maramures"],
+"highlights": ["Wooden Churches", "Mocanita Steam Train", "Traditional Villages"],
+"Description": "Maramures County offers a journey back in time with its UNESCO-listed wooden churches, charming traditional villages, and scenic rides on the Mocanita steam train through breathtaking landscapes.",
+"image": "/images/maramures.jpg"
+},
+{
+"Title": "Mehedinti",
+"Region": ["Oltenia"],
+"highlights": ["Iron Gates", "Danube Gorges", "Natural Parks"],
+"Description": "Mehedinti County is famous for the Iron Gates, a spectacular gorge on the Danube River. Explore the unique biodiversity of its natural parks or take a cruise along the Danube to witness stunning cliffs and caves.",
+"image": "/images/mehedinti.jpg"
+},
+{
+"Title": "Mures",
+"Region": ["Transilvania"],
+"highlights": ["Targu Mures City", "Medieval Citadel of Sighisoara", "Salt Mine Praid"],
+"Description": "Mures County is a blend of medieval charm and natural beauty. Discover the vibrant Targu Mures City, explore the well-preserved citadel of Sighisoara, or visit the therapeutic Salt Mine Praid.",
+"image": "/images/mures.jpg"
+},
+{
+"Title": "Neamt",
+"Region": ["Moldova"],
+"highlights": ["Neamt Fortress", "Ceahlau Massif", "Bicaz Gorges"],
+"Description": "Neamt County is a land of legends and dramatic landscapes. Visit the historic Neamt Fortress, hike the Ceahlau Massif, or admire the stunning beauty of Bicaz Gorges with its towering cliffs.",
+"image": "/images/neamt.jpg"
+},
+{
+"Title": "Olt",
+"Region": ["Oltenia"],
+"highlights": ["Slatina City", "Olt River", "Cultural Festivals"],
+"Description": "Olt County is a destination for relaxation and culture. Visit the city of Slatina, enjoy the serene Olt River, or experience traditional Romanian festivals celebrated with music, dance, and local cuisine.",
+"image": "/images/olt.jpg"
+},
+{
+    "Title": "Harghita",
+    "Region": ["Transilvania"],
+    "highlights": ["Lake Saint Ana", "Harghita Mountains", "Mineral Springs"],
+    "Description": "Harghita County is a haven for nature lovers, with its stunning Lake Saint Ana, the only volcanic lake in Romania. Visitors can hike through the Harghita Mountains or relax in the area’s therapeutic mineral springs.",
+    "image": "/images/harghita.jpg"
+    },
+    {
+    "Title": "Hunedoara",
+    "Region": ["Transilvania"],
+    "highlights": ["Corvin Castle", "Dacian Fortresses", "Retezat National Park"],
+    "Description": "Hunedoara County is a treasure trove of history and natural beauty. Explore the majestic Corvin Castle, discover ancient Dacian fortresses, or venture into the rugged wilderness of Retezat National Park.",
+    "image": "/images/hunedoara.jpg"
+    },
+    {
+    "Title": "Ialomita",
+    "Region": ["Muntenia"],
+    "highlights": ["Slobozia City", "Ialomita River", "Amara Lake Resort"],
+    "Description": "Ialomita County offers serene getaways and rich historical sites. Visit the peaceful Amara Lake Resort, explore the cultural landmarks of Slobozia, or relax by the Ialomita River.",
+    "image": "/images/ialomita.jpg"
+    },
+    {
+    "Title": "Iasi",
+    "Region": ["Moldova"],
+    "highlights": ["Palace of Culture", "Botanical Garden", "Copou Park"],
+    "Description": "Iasi County is a cultural and academic hub of Romania. Home to the iconic Palace of Culture, it boasts beautiful green spaces like Copou Park and the oldest botanical garden in Romania.",
+    "image": "/images/iasi.jpg"
+    },
+    {
+    "Title": "Ilfov",
+    "Region": ["Muntenia"],
+    "highlights": ["Snagov Monastery", "Mogosoaia Palace", "Lakes and Forests"],
+    "Description": "Ilfov County, surrounding Romania’s capital Bucharest, is known for its tranquil retreats. Visit Snagov Monastery, rumored to be the burial place of Vlad the Impaler, or explore the lush landscapes of lakes and forests.",
+    "image": "/images/ilfov.jpg"
+    },
+    {
+    "Title": "Maramures",
+    "Region": ["Maramures"],
+    "highlights": ["Wooden Churches", "Mocanita Steam Train", "Traditional Villages"],
+    "Description": "Maramures County offers a journey back in time with its UNESCO-listed wooden churches, charming traditional villages, and scenic rides on the Mocanita steam train through breathtaking landscapes.",
+    "image": "/images/maramures.jpg"
+    },
+    {
+    "Title": "Mehedinti",
+    "Region": ["Oltenia"],
+    "highlights": ["Iron Gates", "Danube Gorges", "Natural Parks"],
+    "Description": "Mehedinti County is famous for the Iron Gates, a spectacular gorge on the Danube River. Explore the unique biodiversity of its natural parks or take a cruise along the Danube to witness stunning cliffs and caves.",
+    "image": "/images/mehedinti.jpg"
+    },
+    {
+    "Title": "Mures",
+    "Region": ["Transilvania"],
+    "highlights": ["Targu Mures City", "Medieval Citadel of Sighisoara", "Salt Mine Praid"],
+    "Description": "Mures County is a blend of medieval charm and natural beauty. Discover the vibrant Targu Mures City, explore the well-preserved citadel of Sighisoara, or visit the therapeutic Salt Mine Praid.",
+    "image": "/images/mures.jpg"
+    },
+    {
+    "Title": "Neamt",
+    "Region": ["Moldova"],
+    "highlights": ["Neamt Fortress", "Ceahlau Massif", "Bicaz Gorges"],
+    "Description": "Neamt County is a land of legends and dramatic landscapes. Visit the historic Neamt Fortress, hike the Ceahlau Massif, or admire the stunning beauty of Bicaz Gorges with its towering cliffs.",
+    "image": "/images/neamt.jpg"
+    },
+    {
+    "Title": "Olt",
+    "Region": ["Oltenia"],
+    "highlights": ["Slatina City", "Olt River", "Cultural Festivals"],
+    "Description": "Olt County is a destination for relaxation and culture. Visit the city of Slatina, enjoy the serene Olt River, or experience traditional Romanian festivals celebrated with music, dance, and local cuisine.",
+    "image": "/images/olt.jpg"
+    },
+
+{
+    "Title": "Prahova",
+    "Region": ["Muntenia"],
+    "highlights": ["Peles Castle", "Sinaia Resort", "Bucegi Mountains"],
+    "Description": "Prahova County is a tourist hotspot, home to the magnificent Peles Castle, one of the most beautiful in Europe. The Sinaia resort offers skiing and hiking opportunities, while the Bucegi Mountains provide stunning views and nature trails.",
+    "image": "/images/prahova.jpg"
+    },
+    {
+    "Title": "Salaj",
+    "Region": ["Transilvania"],
+    "highlights": ["Gradina Zmeilor", "Porolissum Roman Ruins", "Traditional Villages"],
+    "Description": "Salaj County is known for its unique natural and historical sites. Visit the mysterious Gradina Zmeilor rock formations or the ancient Roman ruins of Porolissum. Experience rural life in the county’s charming traditional villages.",
+    "image": "/images/salaj.jpg"
+    },
+    {
+    "Title": "Satu Mare",
+    "Region": ["Maramures"],
+    "highlights": ["Dacian Settlements", "Ardud Fortress", "Oas Land Ethnographic Museum"],
+    "Description": "Satu Mare County is a blend of history and folklore. Discover ancient Dacian settlements, explore the imposing Ardud Fortress, or learn about local traditions at the Oas Land Ethnographic Museum.",
+    "image": "/images/satu_mare.jpg"
+    },
+    {
+    "Title": "Sibiu",
+    "Region": ["Transilvania"],
+    "highlights": ["Sibiu Old Town", "ASTRA Museum", "Cindrel Mountains"],
+    "Description": "Sibiu County is famous for its fairytale-like Old Town, cobbled streets, and charming squares. Visit the ASTRA Museum of Traditional Folk Civilization, or hike the scenic Cindrel Mountains.",
+    "image": "/images/sibiu.jpg"
+    },
+    {
+    "Title": "Suceava",
+    "Region": ["Bucovina", "Moldova"],
+    "highlights": ["Painted Monasteries", "Voronet Monastery", "Cacica Salt Mine"],
+    "Description": "Suceava County is the heart of Bucovina, known for its UNESCO-listed painted monasteries like Voronet, famous for its vivid blue frescoes. Visitors can also explore the underground wonders of the Cacica Salt Mine.",
+    "image": "/images/suceava.jpg"
+    },
+    {
+    "Title": "Teleorman",
+    "Region": ["Muntenia"],
+    "highlights": ["Alexandria City", "Vedea River", "Natural Reserves"],
+    "Description": "Teleorman County offers quiet charm and natural beauty. Stroll through the peaceful streets of Alexandria City, visit the banks of the Vedea River, or explore the county’s protected natural reserves.",
+    "image": "/images/teleorman.jpg"
+    },
+    {
+    "Title": "Timis",
+    "Region": ["Banat"],
+    "highlights": ["Timisoara City", "Banat Villages", "Natural Parks"],
+    "Description": "Timis County is home to the vibrant city of Timisoara, known as the “Little Vienna” for its stunning architecture and cultural scene. Explore the traditional Banat villages or visit the natural parks for a dose of tranquility.",
+    "image": "/images/timis.jpg"
+    },
+    {
+    "Title": "Tulcea",
+    "Region": ["Dobrogea"],
+    "highlights": ["Danube Delta", "Enisala Fortress", "Letea Forest"],
+    "Description": "Tulcea County is the gateway to the Danube Delta, a UNESCO World Heritage Site teeming with birdlife and unique flora. Visit the Enisala Fortress or the exotic Letea Forest, home to wild horses and ancient trees.",
+    "image": "/images/tulcea.jpg"
+    },
+    {
+    "Title": "Valcea",
+    "Region": ["Oltenia"],
+    "highlights": ["Cozia Monastery", "Olt River Gorge", "Baile Olanesti Spa"],
+    "Description": "Valcea County is a place of history, wellness, and natural beauty. Explore the historic Cozia Monastery, enjoy the scenic Olt River Gorge, or rejuvenate at the thermal Baile Olanesti Spa.",
+    "image": "/images/valcea.jpg"
+    },
+    {
+    "Title": "Vaslui",
+    "Region": ["Moldova"],
+    "highlights": ["Vaslui City", "Stephen the Great Monuments", "Natural Parks"],
+    "Description": "Vaslui County is steeped in Romanian history, with monuments dedicated to Stephen the Great. Discover the cultural sites of Vaslui City and explore the county’s serene natural parks.",
+    "image": "/images/vaslui.jpg"
+    },
+    {
+    "Title": "Vrancea",
+    "Region": ["Moldova"],
+    "highlights": ["Wine Regions", "Natural Parks", "Seismic Zone"],
+    "Description": "Vrancea County is famous for its vineyards and wine production. Tour the region’s wineries, visit scenic natural parks, and learn about Romania’s most seismically active area.",
+    "image": "/images/vrancea.jpg"
+    }
+    ]

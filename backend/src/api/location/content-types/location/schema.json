@@ -1,0 +1,69 @@
+{
+  "kind": "collectionType",
+  "collectionName": "locations",
+  "info": {
+    "singularName": "location",
+    "pluralName": "locations",
+    "displayName": "Location",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "blocks"
+    },
+    "Image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "tags": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tag.tag",
+      "inversedBy": "locations"
+    },
+    "latitude": {
+      "type": "decimal"
+    },
+    "longitude": {
+      "type": "decimal"
+    },
+    "counties": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::county.county",
+      "inversedBy": "locations"
+    },
+    "destinations": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::destination.destination",
+      "mappedBy": "location"
+    },
+    "attractions": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::attraction.attraction",
+      "mappedBy": "locations"
+    },
+    "events": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::event.event",
+      "mappedBy": "locations"
+    }
+  }
+}
