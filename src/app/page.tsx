@@ -71,7 +71,7 @@ export default function Home() {
       {attractions.map((attraction) => (
         <EventCard
           key={attraction.id}
-          title={attraction.Name}
+          title={attraction.title}
           description={attraction.Description}
           // imageUrl={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${attraction.Image.url}`}
           imageUrl={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${attraction.Image.url}`}

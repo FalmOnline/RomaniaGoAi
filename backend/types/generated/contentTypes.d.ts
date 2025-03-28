@@ -445,12 +445,6 @@ export interface ApiAttractionAttraction extends Struct.CollectionTypeSchema {
       'manyToMany',
       'api::monument.monument'
     >;
-    Name: Schema.Attribute.String &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     phone: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -458,6 +452,12 @@ export interface ApiAttractionAttraction extends Struct.CollectionTypeSchema {
         };
       }>;
     publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -474,7 +474,7 @@ export interface ApiCountyCounty extends Struct.CollectionTypeSchema {
   collectionName: 'counties';
   info: {
     description: '';
-    displayName: 'County';
+    displayName: 'Counties';
     pluralName: 'counties';
     singularName: 'county';
   };
@@ -774,7 +774,7 @@ export interface ApiTagTag extends Struct.CollectionTypeSchema {
   collectionName: 'tags';
   info: {
     description: '';
-    displayName: 'Tags';
+    displayName: 'Highlights';
     pluralName: 'tags';
     singularName: 'tag';
   };
