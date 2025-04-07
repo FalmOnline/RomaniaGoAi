@@ -46,6 +46,9 @@
 
 // export default Recommendations;
 
+
+"use client";
+
 import { useState } from 'react';
 
 const Recommendations = () => {
