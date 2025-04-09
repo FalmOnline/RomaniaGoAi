@@ -119,6 +119,40 @@ app.get('/api/events', async (req, res) => {
 //   }
 // });
 
+// This endpoint is used to work with SearcWithPrefferences
+
+app.post('/api/search-embeddings', async (req, res) => {
+  try {
+    const { query } = req.body;
+
+    // Generate embeddings using OpenAI
+    const response = await openai.embeddings.create({
+      model: 'text-embedding-ada-002',
+      input: query,
+    });
+    const queryVector = response.data[0].embedding;
+
+    // Search Pinecone for matches
+    const searchResults = await pinecone.query({
+      indexName: 'your-index-name',
+      queryVector,
+      topK: 10,
+      includeMetadata: true,
+    });
+
+    // Extract tags from the query (example logic)
+    const tags = query.split(" ").map((tag) => tag.trim());
+
+    res.json({ matches: searchResults.matches, tags });
+  } catch (error) {
+    console.error('Error searching embeddings:', error);
+    res.status(500).json({ error: 'Failed to search embeddings' });
+  }
+});
+
+
+
+
 // Generate and store embeddings
 app.post('/api/store-embeddings', async (req, res) => {
   try {
