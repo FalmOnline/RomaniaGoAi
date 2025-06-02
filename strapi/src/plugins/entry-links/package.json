@@ -1,0 +1,7 @@
+{
+    "name": "entry-links",
+    "version": "1.0.0",
+    "main": "strapi-admin.ts",
+    "license": "MIT"
+  }
+  

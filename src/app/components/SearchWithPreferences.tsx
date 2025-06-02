@@ -127,9 +127,8 @@ export default function SearchWithPreferences() {
       alert("Please enter at least 3 characters.");
       return;
     }
-
+  
     try {
-      // Send the search query to the backend
       const response = await fetch("http://localhost:5000/api/search-embeddings", {
         method: "POST",
         headers: {
@@ -137,14 +136,16 @@ export default function SearchWithPreferences() {
         },
         body: JSON.stringify({ query }),
       });
-
+  
       if (!response.ok) {
-        throw new Error("Failed to fetch search results.");
+        const errorData = await response.json();
+        console.error("Backend error:", errorData);
+        throw new Error(errorData.error || "Failed to fetch search results.");
       }
-
+  
       const data = await response.json();
-      setResults(data.matches || []); // Assuming Pinecone returns matches
-      setTagsToSave(data.tags || []); // Assuming backend extracts tags
+      setResults(data.matches || []);
+      setTagsToSave(data.tags || []);
     } catch (error) {
       console.error("Error during search:", error);
       alert("An error occurred while searching. Please try again.");

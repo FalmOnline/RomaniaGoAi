@@ -138,7 +138,7 @@ export default async function Home() {
     <div className="grid grid-cols-1 gap-4">
       <div><SearchWithPreferences /></div>
       <div>
-        <Recommendations />
+        {/* <Recommendations /> */}
         
       </div>
       <div>
