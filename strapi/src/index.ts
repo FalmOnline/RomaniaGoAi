@@ -1,7 +1,6 @@
-//romaniago/backend/src/index.ts
 
-// import type { Core } from '@strapi/strapi';
-
+// This file is used to import the script to update the titleDisplay and slug in Tags.
+// import updateTags from '../myscripts/update-tags';
 
 
 export const exportedObject = {
@@ -22,3 +21,18 @@ export const exportedObject = {
    */
   bootstrap(/* { strapi }: { strapi: Core.Strapi } */) {},
 };
+
+
+//This code is used to update displayTitle and slug in Tags using the file myscripts/update-tags.ts
+// export default {
+//   register() {},
+
+//   async bootstrap({ strapi }: { strapi: any }) {
+//     console.log('⚙️ Bootstrap started...');
+//     try {
+//       await updateTags({ strapi });
+//     } catch (err) {
+//       console.error('❌ Error while updating tags:', err);
+//     }
+//   },
+// };

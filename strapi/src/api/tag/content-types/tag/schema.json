@@ -25,7 +25,8 @@
       "type": "enumeration",
       "enum": [
         "attractions",
-        "events"
+        "events",
+        "both"
       ]
     },
     "counties": {
@@ -86,6 +87,17 @@
       "relation": "manyToMany",
       "target": "api::region.region",
       "mappedBy": "highlights"
+    },
+    "displayTitle": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "unique": true,
+      "default": "title [category]",
+      "required": true
     }
   }
 }

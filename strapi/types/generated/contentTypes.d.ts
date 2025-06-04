@@ -465,6 +465,7 @@ export interface ApiAttractionAttraction extends Struct.CollectionTypeSchema {
         };
       }>;
     title: Schema.Attribute.String &
+      Schema.Attribute.Unique &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -849,7 +850,7 @@ export interface ApiTagTag extends Struct.CollectionTypeSchema {
       'manyToMany',
       'api::attraction.attraction'
     >;
-    category: Schema.Attribute.Enumeration<['attractions', 'events']> &
+    category: Schema.Attribute.Enumeration<['attractions', 'events', 'both']> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -863,6 +864,15 @@ export interface ApiTagTag extends Struct.CollectionTypeSchema {
       'manyToMany',
       'api::destination.destination'
     >;
+    displayTitle: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<'title [category]'>;
     events: Schema.Attribute.Relation<'manyToMany', 'api::event.event'>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::tag.tag'>;

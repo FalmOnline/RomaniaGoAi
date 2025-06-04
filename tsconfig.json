@@ -22,6 +22,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/components/MapComponent.jsx", "strapi/src/plugins/entry-links/admin/src/index.js", "strapi/src/plugins/entry-links/server/index.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/components/MapComponent.jsx", "strapi/src/plugins/entry-links/admin/src/index.js", "strapi/src/plugins/entry-links/server/index.js", "strapi/myscripts/update-tags.js"],
   "exclude": ["node_modules"]
 }
