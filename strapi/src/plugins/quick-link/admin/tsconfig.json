@@ -1,0 +1,23 @@
+// {
+//   "extends": "@strapi/typescript-utils/tsconfigs/admin",
+//   "include": ["./src", "./custom.d.ts"],
+//   "compilerOptions": {
+//     "rootDir": "../",
+//     "baseUrl": "."
+//   }
+// }
+
+{
+  "compilerOptions": {
+    // …your other settings…
+    "jsx": "react-jsx",
+    "allowJs": true,
+    "esModuleInterop": true,
+    // (and make sure “.tsx” is included in “include” or under your plugin’s paths)
+  },
+  "include": [
+    "src",           // or wherever your TS/TSX lives
+    "plugins/**/*.ts",
+    "plugins/**/*.tsx"
+  ]
+}

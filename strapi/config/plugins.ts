@@ -1,9 +1,9 @@
-// export default () => ({});
+export default () => ({});
 
-export default ({ env }) => ({
-    'entry-links': {
-      enabled: true,
-      resolve: './src/plugins/entry-links',
-    },
-  });
+// export default ({ env }) => ({
+//     'quick-link': {
+//       enabled: true,
+//       resolve: './src/plugins/quick-link',
+//     },
+//   });
   

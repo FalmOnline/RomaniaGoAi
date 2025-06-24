@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { GoogleMap, Marker, InfoWindow, useJsApiLoader } from '@react-google-maps/api';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const mapStyles = [
   {
@@ -110,10 +111,16 @@ const MapComponent = ({ attractions }) => {
     setMapRef(map);
     if (attractions.length > 0) {
       const bounds = new window.google.maps.LatLngBounds();
-      console.log(attractions);
       attractions.forEach((attraction) => {
         const { latitude, longitude } = attraction;
-        bounds.extend({ lat: latitude, lng: longitude });
+        if (
+            typeof latitude === 'number' &&
+            typeof longitude === 'number' &&
+            !isNaN(latitude) &&
+            !isNaN(longitude)
+          ) {
+            bounds.extend({ lat: latitude, lng: longitude });
+          }
       });
       map.fitBounds(bounds);
     }
@@ -148,14 +155,22 @@ const MapComponent = ({ attractions }) => {
         />
       )}
 
-      {attractions.map((attraction) => (
-        <Marker
-          key={attraction.id}
-          position={{ lat: attraction.latitude, lng: attraction.longitude }}
-          title={attraction.Name}
-          onClick={() => setSelectedAttraction(attraction)}
-        />
-      ))}
+      {attractions
+        .filter(
+          (attraction) =>
+            typeof attraction.latitude === 'number' &&
+            typeof attraction.longitude === 'number' &&
+            !isNaN(attraction.latitude) &&
+            !isNaN(attraction.longitude)
+        )
+        .map((attraction) => (
+          <Marker
+            key={attraction.id}
+            position={{ lat: attraction.latitude, lng: attraction.longitude }}
+            title={attraction.title}
+            onClick={() => setSelectedAttraction(attraction)}
+          />
+        ))}
 
       {selectedAttraction && (
         <InfoWindow
@@ -163,17 +178,18 @@ const MapComponent = ({ attractions }) => {
           onCloseClick={() => setSelectedAttraction(null)}
         >
           <div style={{ maxWidth: '200px' }}>
-            {selectedAttraction.Image && (
+            {selectedAttraction.image && (
               <Image
-                src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${selectedAttraction.Image.url}`}
-                alt={selectedAttraction.Name}
+                src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${selectedAttraction.image.url}`}
+                alt={selectedAttraction.title}
                 width={200}
                 height={120}
                 style={{ borderRadius: '8px', marginTop: '8px' }}
               />
             )}
-            <h3>{selectedAttraction.Name}</h3>
-            <p>{selectedAttraction.Description}</p>
+            <h3>{selectedAttraction.title}</h3>
+            <p>{selectedAttraction.shortDescription}</p>
+            <p><Link href={`/attractions/${selectedAttraction.slug}`}>Read more</Link></p>
           </div>
         </InfoWindow>
       )}

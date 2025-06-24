@@ -156,35 +156,40 @@ export default function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Track login state
   const [profileImage, setProfileImage] = useState<string | null>(null); // Store profile image URL
   const [dropdownOpen, setDropdownOpen] = useState(false); // Track dropdown visibility
-  const [user, setUser] = useState<any>(null); // Store user data
+  const [setUser] = useState<any>(null); // Store user data
 
   // Fetch the current session on component mount
-  useEffect(() => {
-    const fetchUser = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      if (session?.user) {
-        setUser(session.user);
-        setIsLoggedIn(true);
-        setProfileImage(session.user.user_metadata?.avatar_url || null);
+useEffect(() => {
+  const fetchUser = async () => {
+    const { data: { session } } = await supabase.auth.getSession();
+    if (session?.user) {
+      setUser(session.user);
+      setIsLoggedIn(true);
+      setProfileImage(session.user.user_metadata?.avatar_url || null);
+    }
+  };
+
+  fetchUser();
+
+  // Listen for auth state changes
+  const { data: subscription } = supabase.auth.onAuthStateChange((_event, session) => {
+    if (session?.user) {
+      setUser(session.user);
+      setIsLoggedIn(true);
+      setProfileImage(session.user.user_metadata?.avatar_url || null);
+    } else {
+      setUser(null);
+      setIsLoggedIn(false);
+      setProfileImage(null);
+    }
+  });
+
+    // FIX: Call subscription() if it's a function
+    return () => {
+      if (typeof subscription === 'function') {
+        subscription();
       }
     };
-
-    fetchUser();
-
-    // Listen for auth state changes
-    const { data: subscription } = supabase.auth.onAuthStateChange((_event, session) => {
-      if (session?.user) {
-        setUser(session.user);
-        setIsLoggedIn(true);
-        setProfileImage(session.user.user_metadata?.avatar_url || null);
-      } else {
-        setUser(null);
-        setIsLoggedIn(false);
-        setProfileImage(null);
-      }
-    });
-
-    return () => subscription?.unsubscribe();
   }, []);
 
   const handleLoginWithEmail = async () => {

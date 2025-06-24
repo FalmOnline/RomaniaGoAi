@@ -92,23 +92,24 @@
 import MapComponent from './components/MapComponent';
 import EventCard from './components/EventCard';
 import TripPlanner from './components/TripPlanner';
-import Recommendations from './components/Recommendations';
 import SearchWithPreferences from './components/SearchWithPreferences';
+import Link from 'next/link';
 
 interface Attraction {
   id: number;
-  attributes: {
-    Name: string;
-    Description: string;
-    latitude: number;
-    longitude: number;
-    address: string;
-    Image: {
-      data: {
-        attributes: {
-          url: string;
-        };
-      };
+  title: string;
+  slug: string;
+  shortDescription: string;
+  description: any; // probably an array of rich text blocks
+  latitude: number;
+  longitude: number;
+  address: string | null;
+  image: {
+    url: string;
+    formats?: {
+      small?: { url: string };
+      medium?: { url: string };
+      thumbnail?: { url: string };
     };
   };
 }
@@ -149,11 +150,15 @@ export default async function Home() {
         <EventCard
           key={attraction.id}
           title={attraction.title}
-          description={attraction.Description}
+          slug={attraction.slug}
+          shortDescription={attraction.shortDescription}
+          description={attraction.description.text}
           imageUrl={
-            attraction.Image?.formats?.large?.url
-              ? `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${attraction.Image.formats.large.url}`
-              : '/default-image.jpg'
+            attraction.image?.formats?.medium?.url
+              ? `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${attraction.image.formats.medium.url}`
+              : attraction.image?.url
+                ? `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${attraction.image.url}`
+                : '/default-image.jpg'
           }
           location={attraction.address}
         />
