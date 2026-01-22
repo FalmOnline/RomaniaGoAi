@@ -108,13 +108,29 @@ app.get('/api/monuments', async (req, res) => {
 });
 
 
+// Example route to fetch Articles from Strapi
+app.get('/api/articles', async (req, res) => {
+  try {
+    const response = await fetch(`${process.env.STRAPI_API_URL}/api/articles?populate=*`, {
+      headers: {
+        Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
+      },
+    });
+    const data = await response.json();
+    res.json(data.data);
+  } catch (error) {
+    console.error('Error fetching articles:', error);
+    res.status(500).json({ error: 'Failed to fetch articles' });
+  }
+});
+
 
 // This endpoint is used to work with SearcWithPrefferences
 // Use the /api/store-embeddings endpoint to fetch data from Strapi, generate embeddings using OpenAI, and store them in Pinecone.
 
 app.post('/api/update-embeddings', async (req, res) => {
   try {
-    const dataTypes = ["attractions","destinations","events","locations","monuments"];
+    const dataTypes = ["attractions","destinations","events","locations","monuments", "articles"];
     let updatedVectors = [];
 
     for (const dataType of dataTypes) {

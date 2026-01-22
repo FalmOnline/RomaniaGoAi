@@ -42,16 +42,35 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Header from "./components/Header"; // Import the Header component
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+const girlroy = localFont({
+  src: [
+    {
+      path: './fonts/Gilroy-Regular.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: './fonts/Gilroy-Light.woff2',
+      weight: '300',
+      style: 'normal',
+    },
+    {
+      path: './fonts/Gilroy-Medium.woff2',
+      weight: '600',
+      style: 'normal',
+    },
+    {
+      path: './fonts/Gilroy-Bold.woff2',
+      weight: '700',
+      style: 'normal',
+    },
+        {
+      path: './fonts/Gilroy-Heavy.woff2',
+      weight: '900',
+      style: 'normal',
+    },
+  ],
+})
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -66,7 +85,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${girlroy.className} antialiased`}
       >
         <Header /> {/* Ensure Header does not use browser-specific code */}
         {children}

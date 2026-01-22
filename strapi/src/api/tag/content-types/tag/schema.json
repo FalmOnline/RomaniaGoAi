@@ -98,6 +98,12 @@
       "unique": true,
       "default": "title [category]",
       "required": true
+    },
+    "articles": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::article.article",
+      "mappedBy": "highlights"
     }
   }
 }
