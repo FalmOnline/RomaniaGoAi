@@ -1,12 +1,12 @@
 "use client";
 
-import Link from 'next/link';
-import Image from 'next/image';
-import { useState, useEffect } from 'react';
-import { supabase } from '../api/supabaseClient'; // Import Supabase client
-import LoginPersonIcon from '/public/icons/login-person.svg';
+import Link from "next/link";
+import Image from "next/image";
+import { useState, useEffect } from "react";
+import { supabase } from "../api/supabaseClient"; // Import Supabase client
+import LoginPersonIcon from "/public/icons/login-person.svg";
 import { CircleUserRound } from "lucide-react";
-import { Button } from './Button';
+import { Button } from "./ui/Button";
 
 export default function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Track login state
@@ -15,55 +15,66 @@ export default function Header() {
   const [setUser] = useState<any>(null); // Store user data
 
   // Fetch the current session on component mount
-useEffect(() => {
-  const fetchUser = async () => {
-    const { data: { session } } = await supabase.auth.getSession();
-    if (session?.user) {
-      setUser(session.user);
-      setIsLoggedIn(true);
-      setProfileImage(session.user.user_metadata?.avatar_url || null);
-    }
-  };
+  useEffect(() => {
+    const fetchUser = async () => {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+      if (session?.user) {
+        setUser(session.user);
+        setIsLoggedIn(true);
+        setProfileImage(session.user.user_metadata?.avatar_url || null);
+      }
+    };
 
-  fetchUser();
+    fetchUser();
 
-  // Listen for auth state changes
-  const { data: subscription } = supabase.auth.onAuthStateChange((_event, session) => {
-    if (session?.user) {
-      setUser(session.user);
-      setIsLoggedIn(true);
-      setProfileImage(session.user.user_metadata?.avatar_url || null);
-    } else {
-      setUser(null);
-      setIsLoggedIn(false);
-      setProfileImage(null);
-    }
-  });
+    // Listen for auth state changes
+    const { data: subscription } = supabase.auth.onAuthStateChange(
+      (_event, session) => {
+        if (session?.user) {
+          setUser(session.user);
+          setIsLoggedIn(true);
+          setProfileImage(session.user.user_metadata?.avatar_url || null);
+        } else {
+          setUser(null);
+          setIsLoggedIn(false);
+          setProfileImage(null);
+        }
+      },
+    );
 
     // FIX: Call subscription() if it's a function
     return () => {
-      if (typeof subscription === 'function') {
+      if (typeof subscription === "function") {
         subscription();
       }
     };
   }, []);
 
   const handleLoginWithEmail = async () => {
-    const email = prompt('Enter your email:');
-    const password = prompt('Enter your password:');
+    const email = prompt("Enter your email:");
+    const password = prompt("Enter your password:");
     if (email && password) {
-      const { error } = await supabase.auth.signInWithPassword({ email, password });
+      const { error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
       if (error) alert(error.message);
     }
   };
 
   const handleLoginWithGoogle = async () => {
-    const { error } = await supabase.auth.signInWithOAuth({ provider: 'google' });
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+    });
     if (error) alert(error.message);
   };
 
   const handleLoginWithFacebook = async () => {
-    const { error } = await supabase.auth.signInWithOAuth({ provider: 'facebook' });
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: "facebook",
+    });
     if (error) alert(error.message);
   };
 
@@ -80,7 +91,12 @@ useEffect(() => {
       <div className="mr-20 ml-10 mx-auto flex justify-between items-center">
         <div className="text-xl font-bold">
           <Link href="/" className="flex items-center">
-            <Image src="/images/RomaniaGO-Logo.png" alt="Logo" width={102} height={62} />
+            <Image
+              src="/images/RomaniaGO-Logo.png"
+              alt="Logo"
+              width={102}
+              height={62}
+            />
           </Link>
         </div>
         <nav>
@@ -88,16 +104,23 @@ useEffect(() => {
             <li className="relative">
               {/* Round Button */}
 
-              
-              <Button  onClick={() => setDropdownOpen(!dropdownOpen)} leftIcon={<CircleUserRound size={24} strokeWidth={1} aria-hidden="true" />}>                {isLoggedIn && profileImage ? (
-                  <img
+              <Button
+                onClick={() => setDropdownOpen(!dropdownOpen)}
+                Icon={CircleUserRound}
+                iconPosition="left"
+              >
+                {" "}
+                {isLoggedIn && profileImage ? (
+                  <Image
                     src={profileImage}
                     alt="Profile"
                     className="w-10 h-10 rounded-full object-cover"
                   />
                 ) : (
-                  ''
-                )}Sign In</Button>
+                  ""
+                )}
+                Sign In
+              </Button>
 
 
               {/* Dropdown Menu */}
