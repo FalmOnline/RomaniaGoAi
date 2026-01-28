@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Image from 'next/image';
+import React from "react";
+import Image from "next/image";
 
 interface Item {
   title: string;
@@ -23,9 +23,9 @@ export default function CollageGallery({
           <div
             key={idx}
             className={`relative min-w-[180px] sm:min-w-[200px] md:min-w-[240px] flex-shrink-0 bg-white rounded-xl shadow-md overflow-hidden transition-transform duration-300
-              ${idx % 2 === 0 ? 'rotate-[-1deg]' : 'rotate-[1deg]'}`}
+              ${idx % 2 === 0 ? "rotate-[-1deg]" : "rotate-[1deg]"}`}
             style={{
-              boxShadow: '0 8px 20px rgba(0, 0, 0, 0.05)',
+              boxShadow: "0 8px 20px rgba(0, 0, 0, 0.05)",
             }}
           >
             <div className="relative w-full h-40 sm:h-48">
@@ -37,7 +37,9 @@ export default function CollageGallery({
                 className="rounded-t-xl"
               />
             </div>
-            <div className="p-3 text-sm text-gray-700 font-medium">{item.title}</div>
+            <div className="p-3 text-sm text-gray-700 font-medium">
+              {item.title}
+            </div>
           </div>
         ))}
       </div>

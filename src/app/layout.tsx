@@ -36,7 +36,6 @@
 //   );
 // }
 
-
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
@@ -45,32 +44,32 @@ import Header from "./components/Header"; // Import the Header component
 const girlroy = localFont({
   src: [
     {
-      path: './fonts/Gilroy-Regular.woff2',
-      weight: '400',
-      style: 'normal',
+      path: "./fonts/Gilroy-Regular.woff2",
+      weight: "400",
+      style: "normal",
     },
     {
-      path: './fonts/Gilroy-Light.woff2',
-      weight: '300',
-      style: 'normal',
+      path: "./fonts/Gilroy-Light.woff2",
+      weight: "300",
+      style: "light",
     },
     {
-      path: './fonts/Gilroy-Medium.woff2',
-      weight: '600',
-      style: 'normal',
+      path: "./fonts/Gilroy-Medium.woff2",
+      weight: "600",
+      style: "medium",
     },
     {
-      path: './fonts/Gilroy-Bold.woff2',
-      weight: '700',
-      style: 'normal',
+      path: "./fonts/Gilroy-Bold.woff2",
+      weight: "700",
+      style: "bold",
     },
-        {
-      path: './fonts/Gilroy-Heavy.woff2',
-      weight: '900',
-      style: 'normal',
+    {
+      path: "./fonts/Gilroy-Heavy.woff2",
+      weight: "900",
+      style: "heavy",
     },
   ],
-})
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -84,9 +83,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${girlroy.className} antialiased`}
-      >
+      <body className={`${girlroy.className} antialiased`}>
         <Header /> {/* Ensure Header does not use browser-specific code */}
         {children}
       </body>

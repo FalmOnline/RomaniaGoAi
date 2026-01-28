@@ -1,4 +1,3 @@
-
 import type { LucideIcon } from "lucide-react";
 import Link from "next/link";
 
@@ -131,6 +130,7 @@ export function Button(props: ButtonProps) {
   }
 
   // Button mode
+  // eslint-disable-next-line
   const { href, type, ...rest } = props as ButtonAsButtonProps;
 
   return (

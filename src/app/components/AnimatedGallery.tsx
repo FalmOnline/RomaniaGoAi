@@ -1,7 +1,7 @@
 // src/components/AnimatedGallery.tsx
-'use client';
+"use client";
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from "react";
 
 export default function AnimatedGallery({ data }: { data: string[] }) {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -29,7 +29,7 @@ export default function AnimatedGallery({ data }: { data: string[] }) {
     <div
       ref={scrollRef}
       className="flex overflow-x-auto gap-4 py-2 scrollbar-hide"
-      style={{ scrollBehavior: 'smooth' }}
+      style={{ scrollBehavior: "smooth" }}
     >
       {data.map((title, idx) => (
         <div
