@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { supabase } from "../api/supabaseClient"; // Import Supabase client
 import LoginPersonIcon from "/public/icons/login-person.svg";
 import { CircleUserRound } from "lucide-react";
-import { Button } from "./ui/Button";
+import { Button } from "./ui/buttons/Button";
 
 export default function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Track login state

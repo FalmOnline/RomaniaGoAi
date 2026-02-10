@@ -9,11 +9,105 @@ import { Pinecone } from '@pinecone-database/pinecone';
 
 dotenv.config();
 
+
+
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
+
+
+function joinUrl(base, path) {
+  if (!base) return path;
+  if (!path) return path;
+  const cleanBase = base.replace(/\/+$/, "");
+  const cleanPath = path.startsWith("/") ? path : `/${path}`;
+  return `${cleanBase}${cleanPath}`;
+}
+
+function absolutizeMaybe(url) {
+  if (!url || typeof url !== "string") return url;
+  if (url.startsWith("http://") || url.startsWith("https://")) return url;
+  // Only Strapi upload paths should be absolutized
+  if (url.startsWith("/uploads/")) {
+    return joinUrl(process.env.STRAPI_PUBLIC_URL, url);
+  }
+  return url;
+}
+
+/**
+ * Detect a Strapi media object by typical keys.
+ * This avoids accidentally changing unrelated objects that happen to have `url`.
+ */
+function isStrapiMediaObject(obj) {
+  return (
+    obj &&
+    typeof obj === "object" &&
+    typeof obj.url === "string" &&
+    (obj.formats || obj.mime || obj.provider || obj.hash)
+  );
+}
+
+console.log("STRAPI_PUBLIC_URL =", process.env.STRAPI_PUBLIC_URL);
+/**
+ * Recursively walk any object/array and absolutize every Strapi media `url`
+ * (including formats.small.url, formats.medium.url, etc.)
+ */
+function absolutizeMediaDeep(value) {
+  if (Array.isArray(value)) {
+    return value.map(absolutizeMediaDeep);
+  }
+
+  if (value && typeof value === "object") {
+    // If it's a Strapi media object, fix url + formats urls
+    if (isStrapiMediaObject(value)) {
+      const fixed = { ...value };
+      fixed.url = absolutizeMaybe(fixed.url);
+
+      if (fixed.formats && typeof fixed.formats === "object") {
+        fixed.formats = { ...fixed.formats };
+        for (const k of Object.keys(fixed.formats)) {
+          fixed.formats[k] = { ...fixed.formats[k] };
+          fixed.formats[k].url = absolutizeMaybe(fixed.formats[k].url);
+        }
+      }
+
+      return fixed;
+    }
+
+    // Otherwise, just recurse into keys
+    const out = { ...value };
+    for (const key of Object.keys(out)) {
+      out[key] = absolutizeMediaDeep(out[key]);
+    }
+    return out;
+  }
+
+  return value;
+}
+
+// Create reusable fetch from Strapi
+async function fetchStrapiCollection(collectionName) {
+  const url = `${process.env.STRAPI_API_URL}/api/${collectionName}?populate=*`;
+
+  const response = await fetch(url, {
+    headers: {
+      Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error(`Strapi failed: ${response.status} ${response.statusText}`);
+  }
+
+  const json = await response.json();
+  const items = json?.data ?? [];
+
+  // Option 2: normalize media urls here
+  return absolutizeMediaDeep(items);
+}
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -27,100 +121,65 @@ const pineconeIndex = pinecone.index("romaniago"); // Replace with your index na
 
 
 // Example route to fetch attractions from Strapi
-app.get('/api/attractions', async (req, res) => {
+app.get("/api/attractions", async (req, res) => {
   try {
-    const response = await fetch(`${process.env.STRAPI_API_URL}/api/attractions?populate=*`, {
-      headers: {
-        Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
-      },
-    });
-    const data = await response.json();
-    res.json(data.data);
+    const items = await fetchStrapiCollection("attractions");
+    res.json(items);
   } catch (error) {
-    console.error('Error fetching attractions:', error);
-    res.status(500).json({ error: 'Failed to fetch attractions' });
+    console.error("Error fetching attractions:", error);
+    res.status(500).json({ error: "Failed to fetch attractions" });
   }
 });
 
 // Example route to fetch events from Strapi
-app.get('/api/events', async (req, res) => {
+app.get("/api/events", async (req, res) => {
   try {
-    const response = await fetch(`${process.env.STRAPI_API_URL}/api/events?populate=*`, {
-      headers: {
-        Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
-      },
-    });
-    const data = await response.json();
-    res.json(data.data);
+    res.json(await fetchStrapiCollection("events"));
   } catch (error) {
-    console.error('Error fetching events:', error);
-    res.status(500).json({ error: 'Failed to fetch events' });
+    console.error("Error fetching events:", error);
+    res.status(500).json({ error: "Failed to fetch events" });
   }
 });
 
 // Example route to fetch Destinations from Strapi
-app.get('/api/destinations', async (req, res) => {
+app.get("/api/destinations", async (req, res) => {
   try {
-    const response = await fetch(`${process.env.STRAPI_API_URL}/api/destinations?populate=*`, {
-      headers: {
-        Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
-      },
-    });
-    const data = await response.json();
-    res.json(data.data);
+    res.json(await fetchStrapiCollection("destinations"));
   } catch (error) {
-    console.error('Error fetching destinations:', error);
-    res.status(500).json({ error: 'Failed to fetch destinations' });
+    console.error("Error fetching destinations:", error);
+    res.status(500).json({ error: "Failed to fetch destinations" });
   }
 });
 
 
 // Example route to fetch locations from Strapi
-app.get('/api/locations', async (req, res) => {
+app.get("/api/locations", async (req, res) => {
   try {
-    const response = await fetch(`${process.env.STRAPI_API_URL}/api/locations?populate=*`, {
-      headers: {
-        Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
-      },
-    });
-    const data = await response.json();
-    res.json(data.data);
+    res.json(await fetchStrapiCollection("locations"));
   } catch (error) {
-    console.error('Error fetching locations:', error);
-    res.status(500).json({ error: 'Failed to fetch locations' });
+    console.error("Error fetching locations.", error);
+    res.status(500).json({ error: "Failed to fetch locations" });
   }
 });
 
 // Example route to fetch Monuments from Strapi
-app.get('/api/monuments', async (req, res) => {
+app.get("/api/monuments", async (req, res) => {
   try {
-    const response = await fetch(`${process.env.STRAPI_API_URL}/api/monuments?populate=*`, {
-      headers: {
-        Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
-      },
-    });
-    const data = await response.json();
-    res.json(data.data);
+    res.json(await fetchStrapiCollection("monuments"));
   } catch (error) {
-    console.error('Error fetching monuments:', error);
-    res.status(500).json({ error: 'Failed to fetch monuments' });
+    console.error("Error fetching monuments.", error);
+    res.status(500).json({ error: "Failed to fetch monuments" });
   }
 });
 
 
 // Example route to fetch Articles from Strapi
-app.get('/api/articles', async (req, res) => {
+app.get("/api/articles", async (req, res) => {
   try {
-    const response = await fetch(`${process.env.STRAPI_API_URL}/api/articles?populate=*`, {
-      headers: {
-        Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
-      },
-    });
-    const data = await response.json();
-    res.json(data.data);
+    res.json(await fetchStrapiCollection("articles"));
   } catch (error) {
-    console.error('Error fetching articles:', error);
-    res.status(500).json({ error: 'Failed to fetch articles' });
+    console.error("Error fetching articles.", error);
+    res.status(500).json({ error: "Failed to fetch articles" });
   }
 });
 

@@ -81,7 +81,7 @@ export default async function AttractionPage({ params }: { params: { slug: strin
       <h1 className="text-3xl font-bold mb-4">{attraction.title}</h1>
       {attraction.image?.formats?.medium?.url && (
         <Image
-          src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${attraction.image.formats.medium.url}`}
+          src={`${attraction.image.formats.medium.url}`}
           alt={attraction.title}
           width={750}
           height={499}

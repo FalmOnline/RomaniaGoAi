@@ -7,8 +7,8 @@ import Card from "../ui/Card";
 
 const event = {
   image: "/images/event-test.png",
-  category: "event",
-  crowds: "low",
+  category: "article",
+  crowds: "high",
   location: "Cluj-Napoca",
   date: "15.07.2025",
   rating: 4.8,
@@ -31,6 +31,7 @@ const event = {
     "night",
     "party",
   ],
+  slug: "electric-castle",
 };
 
 export default function Hero() {

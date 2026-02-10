@@ -41,6 +41,8 @@ type ButtonProps = ButtonAsButtonProps | ButtonAsLinkProps;
 export function Button(props: ButtonProps) {
   // 4) Extract common props (works for both button & link)
   const {
+    type,
+    href,
     Icon,
     iconPosition = "left",
     size = "big",
@@ -49,6 +51,7 @@ export function Button(props: ButtonProps) {
     isLoading = false,
     className = "",
     children,
+    ...rest
   } = props;
 
   // 5) If loading => treat as disabled (for both modes)
@@ -105,24 +108,25 @@ export function Button(props: ButtonProps) {
    * - if props has `href` -> render as link
    * - otherwise -> render as <button>
    */
-  if (props.href) {
-    const { href, onClick, ...rest } = props;
+  if (href) {
+    const { onClick, tabIndex, ...anchorRest } =
+      rest as React.AnchorHTMLAttributes<HTMLAnchorElement>;
 
     return (
       <Link
         href={href}
+        {...anchorRest} // ✅ spread the cleaned props
         className={classes}
         aria-busy={isLoading || undefined}
         aria-disabled={isDisabled || undefined}
-        tabIndex={isDisabled ? -1 : rest.tabIndex}
+        tabIndex={isDisabled ? -1 : tabIndex} // ✅ use destructured tabIndex
         onClick={(e) => {
           if (isDisabled) {
             e.preventDefault();
             return;
           }
-          onClick?.(e);
+          onClick?.(e); // ✅ user's onClick
         }}
-        {...rest}
       >
         {content}
       </Link>
@@ -131,7 +135,7 @@ export function Button(props: ButtonProps) {
 
   // Button mode
   // eslint-disable-next-line
-  const { href, type, ...rest } = props as ButtonAsButtonProps;
+  // const { href, type, ...rest } = props as ButtonAsButtonProps;
 
   return (
     <button

@@ -1,127 +1,129 @@
+// TO DO
+// Think of a way to add links to tags (to show all attractions, events etc. with that tag...)
+// Implement Favorites
+// Get the src for the card, so when you click on the card to be redirectd to the article
+// How can we get the high crowds from Google?
+// What does visited means?
+// Alternative text for images in Strapi
+// Add href to Card and wrap content with next/link
+// Keep the Favorite button clickable without triggering navigation (stopPropagation)
+
 import Image from "next/image";
-import {
-  Calendar,
-  MapPin,
-  FileText,
-  Heart,
-  Star,
-  Clock,
-  Users,
-} from "lucide-react";
+import Badge from "./badges/Badge";
+import IconText from "./badges/IconText";
+import RatingBadge from "./badges/RatingBadge";
+import Link from "next/link";
+
+import { Calendar, MapPin, FileText, Clock, Users } from "lucide-react";
+import FavoriteButton from "./buttons/FavoriteButton";
+import TagsWithPopover from "./Tags/TagsWithPopover";
+
+// Card type
+
+const VARIANT = {
+  minimal: "hidden",
+};
+
+// Category label
+
+const CATEGORY = {
+  event: {
+    Icon: Calendar,
+    className: "bg-rg-primary-amber text-white",
+    label: "Event",
+  },
+  attraction: {
+    Icon: MapPin,
+    className: "bg-rg-primary-burgundy text-white",
+    label: "Attraction",
+  },
+  article: {
+    Icon: FileText,
+    className: "bg-rg-primary-teal text-white",
+    label: "Article",
+  },
+};
+
+// Crowd label
+// const CROWD = {
+//   low: "bg-rg-green-light-10 text-rg-primary-green",
+//   medium: "bg-rg-yellow-light-30 text-rg-yellow-dark-40",
+//   high: "bg-rg-red-light-20 text-rg-primary-red",
+// };
 
 export default function Card({
-  image,
-  category,
-  crowds,
-  location,
-  date,
-  rating,
-  peopleRating,
-  title,
-  description,
-  duration,
-  numberVisitors,
-  tags,
+  title = "",
+  image = "",
+  category = "attraction",
+  // crowds = "low",
+  location = "",
+  // date = "",
+  rating = "5.0",
+  peopleRating = "",
+  description = "",
+  duration = "",
+  numberVisitors = "",
+  tags = [],
+  slug = "",
+  variant = "",
 }) {
-  // Category label
-  let Icon;
-  let categoryColor;
-
-  if (category === "event") {
-    Icon = Calendar;
-    categoryColor = "bg-rg-primary-amber text-white";
-  } else if (category === "atraction") {
-    Icon = MapPin;
-    categoryColor = "bg-rg-primary-burgundy text-white";
-  } else {
-    Icon = FileText;
-    categoryColor = "bg-rg-primary-teal text-white";
-  }
-
-  // Crowd label
-  let buttonColorState;
-  const success = "bg-rg-green-light-10 text-rg-primary-green";
-  const warning = "bg-rg-green-light-30 text-rg-yello-dark-30";
-  const danger = "bg-rg-red-light-20 text-rg-primary-green";
-
-  const baseClasses =
-    "shadow-md flex-row opacity-95 rounded-full px-3 py-1 inline-flex gap-2 items-center text-sm";
-
-  if (crowds === "low") {
-    buttonColorState = success;
-  } else if ((crowds = "medium")) {
-    buttonColorState = warning;
-  } else {
-    buttonColorState = danger;
-  }
+  const categoryConfig = CATEGORY[category] ?? CATEGORY.article;
+  // const crowdClass = CROWD[crowds] ?? CROWD.high;
+  const CategoryIcon = categoryConfig.Icon;
+  const VariantMinimal = VARIANT[variant];
 
   return (
-    <div className="shadow-md rounded-3xl bg-white max-w-sm overflow-hidden flex flex-col my-4 mx-4">
-      <div className="capitalize relative">
-        <Image
-          src={image}
-          alt={title}
-          width={500}
-          height={500}
-          className="relative"
-        />
-        <div className="absolute top-3 z-30 px-5 py-1 flex flex-row justify-between items-center w-full">
-          <div className="flex gap-2 h-8">
-            <p className={`${baseClasses} ${categoryColor}`}>
-              <Icon size={18} strokeWidth={1.8} /> {category}
-            </p>
-            <p className={`${baseClasses} ${buttonColorState}`}>
-              &#9679; {crowds} crowds
-            </p>
+    <div className="shadow-md rounded-3xl bg-white max-w-[352px] flex flex-col my-4 mx-4">
+      <Link href={`/${category}s/${slug}`}>
+        <div className="capitalize relative">
+          <div className="relative rounded-t-3xl overflow-hidden h-[240px]">
+            <Image
+              src={image}
+              alt={title}
+              fill
+              className="w-full h-auto object-cover"
+            />
           </div>
-          <p className="shadow-md bg-white opacity-85 rounded-full inline-flex items-center justify-center h-10 w-10">
-            <Heart size={28} strokeWidth={1.2} />
-          </p>
+          <div className="absolute top-3 z-30 px-5 py-1 flex flex-row justify-between items-center w-full">
+            <div className="flex gap-2 h-8">
+              <Badge className={categoryConfig.className}>
+                <CategoryIcon size={18} strokeWidth={1.8} />{" "}
+                {categoryConfig.label}
+              </Badge>
+              {/* <Badge className={crowdClass}>&#9679; {crowds} crowds</Badge> */}
+            </div>
+            <FavoriteButton />
+          </div>
         </div>
-      </div>
+      </Link>
       <div className="px-4 mt-4 mb-6">
-        <div className="flex justify-between items-center mb-1">
+        <div
+          className={`flex justify-between items-center mb-1 ${VariantMinimal}`}
+        >
           <div className="flex flex-row gap-2 text-rg-black-50 text-sm">
             <p>{location}</p>
-            <p>&#9679;</p>
-            <p>{date}</p>
           </div>
-          <div className="bg-rg-black-5 text-black flex flex-row gap-1 px-3 py-2 rounded-3xl text-sm items-center">
-            <span className="text-rg-primary-yellow">
-              <Star size={18} />
-            </span>
-            {rating}
-            <span className="text-rg-black-50">
-              {`${"(" + peopleRating + ")"}`}{" "}
-            </span>
-          </div>
+          <RatingBadge rating={rating} peopleRating={peopleRating} />
         </div>
         <div>
-          <h3 className="font-bold text-2xl mb-2">{title}</h3>
-          <p className="text-sm text-rg-black-70 mb-1">{description}</p>
-        </div>
-        <div className="flex justify-between py-3 mb-2 text-sm">
-          <p className="flex flex-row gap-1 text-rg-black-50 items-center">
-            <Clock size={18} strokeWidth={1.2} /> {duration}
-          </p>
-          <p className="flex flex-row gap-2 text-rg-black-50 items-center">
-            <Users size={18} strokeWidth={1.2} />
-            {numberVisitors} visited
+          <h3 className="font-bold text-2xl mb-2 whitespace-nowrap truncate max-w-80" title={title}>{title}</h3>
+          <p className="text-sm text-rg-black-70 mb-1 line-clamp-2">
+            {description}
           </p>
         </div>
-        <div className="flex flex-row gap-2 items-center">
-          <ul className="flex gap-1 text-sm">
-            <li className="border border-solid border-black-10 rounded-2xl px-3 py-1 inline-flex text-rg-black-70">
-              {tags[0]}
-            </li>
-            <li className="border border-solid border-black-10 rounded-2xl px-3 py-1 inline-flex text-rg-black-70">
-              {tags[1]}
-            </li>
-            <li className="border border-solid border-black-10 rounded-2xl px-3 py-1 inline-flex text-rg-black-70">
-              {tags[2]}
-            </li>
-          </ul>
-          + {tags.length - 3}
+        {duration && numberVisitors && (
+          <div className="flex justify-between py-3 mb-2 text-sm">
+            <IconText Icon={Clock} className="text-rg-black-50">
+              {duration}
+            </IconText>
+            <IconText Icon={Users} className="text-rg-black-50">
+              {numberVisitors} visited
+            </IconText>
+          </div>
+        )}
+
+        <div className="flex flex-row gap-2 items-center text-rg-black-70 text-sm mt-4">
+          <TagsWithPopover tags={tags} />
         </div>
       </div>
     </div>
