@@ -1,38 +1,10 @@
+"use client";
+
 import React from "react";
-import HeroSearchV1 from "./HeroSearchV1";
+// import HeroSearchV1 from "./HeroSearchV1";
 import HeroSearchV2 from "./HeroSearchV2";
 import HeroSearchOld from "./HeroSearch-Old";
 import { motion, AnimatePresence } from "framer-motion";
-import Card from "../ui/Card";
-
-const event = {
-  image: "/images/event-test.png",
-  category: "article",
-  crowds: "high",
-  location: "Cluj-Napoca",
-  date: "15.07.2025",
-  rating: 4.8,
-  peopleRating: 2847,
-  title: "Electric Castle",
-  description:
-    "Electric Castle is a Romanian music festival that takes place every year on the Transylvanian spectacular...",
-  duration: "2-3 hours",
-  numberVisitors: 2847,
-  tags: [
-    "festival",
-    "music",
-    "cluj",
-    "youth",
-    "summer",
-    "castle",
-    "electric",
-    "camping",
-    "fun",
-    "night",
-    "party",
-  ],
-  slug: "electric-castle",
-};
 
 export default function Hero() {
   return (
@@ -63,12 +35,9 @@ export default function Hero() {
           Explore destinations, events, and experiences tailored for you.
         </motion.p>
       </div>
-      <Card {...event} />
-      <p className="bg-rg-green-light-10">text</p>
-      <HeroSearchV1 />
-      <div>
-        <HeroSearchOld />
-      </div>
+      {/* <HeroSearchV1 /> */}
+            <HeroSearchV2 />
+
     </div>
   );
 }

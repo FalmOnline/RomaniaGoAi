@@ -1,6 +1,11 @@
 import Tag from "./Tag";
 
-export default function TagList({ tags = [], className = "" }) {
+interface TagListProps {
+  tags?: string[];
+  className?: string;
+}
+
+export default function TagList({ tags = [], className = "" }: TagListProps) {
   return (
     <ul className={"flex gap-1" + className}>
       {tags.map((t) => (

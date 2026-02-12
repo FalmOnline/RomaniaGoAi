@@ -25,3 +25,38 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+/* Infinite Carousel Animations */
+@keyframes scroll-left {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-33.333%, 0, 0);
+  }
+}
+
+@keyframes scroll-right {
+  0% {
+    transform: translate3d(-33.333%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-scroll-left {
+  animation: scroll-left var(--duration, 40s) linear infinite;
+  will-change: transform;
+}
+
+.animate-scroll-right {
+  animation: scroll-right var(--duration, 40s) linear infinite;
+  will-change: transform;
+}
+
+/* Pause animation on hover */
+.carousel-row:hover .animate-scroll-left,
+.carousel-row:hover .animate-scroll-right {
+  animation-play-state: paused;
+}

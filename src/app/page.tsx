@@ -1,9 +1,11 @@
-import AttractionsGrid from "./components/AttractionGrid";
+import Hero from "./components/HomeSections/Hero";
+
+console.log("Server");
 
 export default function Page() {
   return (
-    <main className="p-6">
-      <AttractionsGrid />
+    <main>
+      <Hero />
     </main>
   );
 }

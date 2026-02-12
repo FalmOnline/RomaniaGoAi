@@ -1,6 +1,11 @@
 import TagList from "./TagList";
 
-export default function TagsPopover({ remaining, total }) {
+interface TagsPopoverProps {
+  remaining: string[];
+  total: number;
+}
+
+export default function TagsPopover({ remaining, total }: TagsPopoverProps) {
   return (
     <div className="relative group">
       <button

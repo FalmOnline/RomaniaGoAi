@@ -19,6 +19,22 @@ import FavoriteButton from "./buttons/FavoriteButton";
 import TagsWithPopover from "./Tags/TagsWithPopover";
 
 // Card type
+type CategoryType = "event" | "attraction" | "article";
+
+interface CardProps {
+  title?: string;
+  image?: string;
+  category?: CategoryType;
+  location?: string;
+  rating?: string;
+  peopleRating?: string;
+  description?: string;
+  duration?: string;
+  numberVisitors?: string;
+  tags?: string[];
+  slug?: string;
+  variant?: string;
+}
 
 const VARIANT = {
   minimal: "hidden",
@@ -66,14 +82,14 @@ export default function Card({
   tags = [],
   slug = "",
   variant = "",
-}) {
+}: CardProps) {
   const categoryConfig = CATEGORY[category] ?? CATEGORY.article;
   // const crowdClass = CROWD[crowds] ?? CROWD.high;
   const CategoryIcon = categoryConfig.Icon;
   const VariantMinimal = VARIANT[variant];
 
   return (
-    <div className="shadow-md rounded-3xl bg-white max-w-[352px] flex flex-col my-4 mx-4">
+    <div className="group/card shadow-md rounded-3xl bg-white max-w-[352px] h-full flex flex-col my-4 border border-rg-black-10 transition-all duration-300 hover:border-rg-primary-burgundy/40 hover:shadow-[0_0_30px_-10px_rgba(139,21,56,0.3)]">
       <Link href={`/${category}s/${slug}`}>
         <div className="capitalize relative">
           <div className="relative rounded-t-3xl overflow-hidden h-[240px]">
@@ -81,7 +97,7 @@ export default function Card({
               src={image}
               alt={title}
               fill
-              className="w-full h-auto object-cover"
+              className="w-full h-auto object-cover transition-transform duration-500 group-hover/card:scale-110"
             />
           </div>
           <div className="absolute top-3 z-30 px-5 py-1 flex flex-row justify-between items-center w-full">
@@ -96,7 +112,7 @@ export default function Card({
           </div>
         </div>
       </Link>
-      <div className="px-4 mt-4 mb-6">
+      <div className="px-4 mt-4 mb-2">
         <div
           className={`flex justify-between items-center mb-1 ${VariantMinimal}`}
         >
@@ -106,7 +122,14 @@ export default function Card({
           <RatingBadge rating={rating} peopleRating={peopleRating} />
         </div>
         <div>
-          <h3 className="font-bold text-2xl mb-2 whitespace-nowrap truncate max-w-80" title={title}>{title}</h3>
+          <Link href={`/${category}s/${slug}`}>
+            <h3
+              className="font-bold text-2xl mb-2 whitespace-nowrap truncate max-w-80"
+              title={title}
+            >
+              {title}
+            </h3>
+          </Link>
           <p className="text-sm text-rg-black-70 mb-1 line-clamp-2">
             {description}
           </p>

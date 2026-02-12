@@ -1,7 +1,11 @@
 import TagsPopover from "./TagsPopover";
 import TagList from "./TagList";
 
-export default function TagsWithPopover({ tags = [] }) {
+interface TagsWithPopoverProps {
+  tags?: string[];
+}
+
+export default function TagsWithPopover({ tags = [] }: TagsWithPopoverProps) {
   const visible = tags.slice(0, 2);
   const remaining = tags.slice(2);
 

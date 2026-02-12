@@ -1,4 +1,3 @@
-
 // import { notFound } from 'next/navigation';
 // import Image from 'next/image';
 
@@ -46,31 +45,33 @@
 //   );
 // }
 
-
-
-import { notFound } from 'next/navigation';
-import Image from 'next/image';
-
-export const dynamic = 'force-dynamic';
+import { notFound } from "next/navigation";
+import Image from "next/image";
 
 async function getAttraction(slug: string) {
-  const res = await fetch(`http://localhost:5000/api/attractions`, { cache: 'no-store' });
+  const res = await fetch(`http://localhost:5000/api/attractions`, {
+    next: { revalidate: 60 }, // Cache for 60 seconds
+  });
   const data = await res.json();
   return data.find((item: any) => item.slug === slug) || null;
 }
 
 function getDescriptionText(description: any) {
-  if (!Array.isArray(description)) return '';
+  if (!Array.isArray(description)) return "";
   return description
-    .map(paragraph =>
+    .map((paragraph) =>
       Array.isArray(paragraph.children)
-        ? paragraph.children.map(child => child.text).join('')
-        : ''
+        ? paragraph.children.map((child) => child.text).join("")
+        : "",
     )
-    .join('\n');
+    .join("\n");
 }
 
-export default async function AttractionPage({ params }: { params: { slug: string } }) {
+export default async function AttractionPage({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const { slug } = await params;
   const attraction = await getAttraction(slug);
 
@@ -95,4 +96,3 @@ export default async function AttractionPage({ params }: { params: { slug: strin
     </div>
   );
 }
-
