@@ -12,7 +12,7 @@ export default function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Track login state
   const [profileImage, setProfileImage] = useState<string | null>(null); // Store profile image URL
   const [dropdownOpen, setDropdownOpen] = useState(false); // Track dropdown visibility
-  const [setUser] = useState<any>(null); // Store user data
+  const [setUser, setSetUser] = useState<any>(null); // Store user data
 
   // Fetch the current session on component mount
   useEffect(() => {
@@ -21,7 +21,7 @@ export default function Header() {
         data: { session },
       } = await supabase.auth.getSession();
       if (session?.user) {
-        setUser(session.user);
+        setSetUser(session.user);
         setIsLoggedIn(true);
         setProfileImage(session.user.user_metadata?.avatar_url || null);
       }
@@ -33,11 +33,11 @@ export default function Header() {
     const { data: subscription } = supabase.auth.onAuthStateChange(
       (_event, session) => {
         if (session?.user) {
-          setUser(session.user);
+          setSetUser(session.user);
           setIsLoggedIn(true);
           setProfileImage(session.user.user_metadata?.avatar_url || null);
         } else {
-          setUser(null);
+          setSetUser(null);
           setIsLoggedIn(false);
           setProfileImage(null);
         }
@@ -81,7 +81,7 @@ export default function Header() {
   const handleLogout = async () => {
     const { error } = await supabase.auth.signOut();
     if (error) alert(error.message);
-    setUser(null);
+    setSetUser(null);
     setIsLoggedIn(false);
     setProfileImage(null);
   };
@@ -115,13 +115,13 @@ export default function Header() {
                     src={profileImage}
                     alt="Profile"
                     className="w-10 h-10 rounded-full object-cover"
+                    fill
                   />
                 ) : (
                   ""
                 )}
                 Sign In
               </Button>
-
 
               {/* Dropdown Menu */}
               {dropdownOpen && (

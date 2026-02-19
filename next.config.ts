@@ -1,4 +1,3 @@
-
 // import type { NextConfig } from "next";
 // import withSvgr from "next-plugin-svgr";
 
@@ -35,6 +34,11 @@ const nextConfig: NextConfig = {
         hostname: "localhost",
         port: "1337", // Add the port if your Strapi server is running on a specific port
         pathname: "/uploads/**", // Adjust the pathname to match your image paths
+      },
+      {
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com",
+        pathname: "/**",
       },
     ],
   },

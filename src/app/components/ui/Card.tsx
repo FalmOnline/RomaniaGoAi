@@ -36,10 +36,6 @@ interface CardProps {
   variant?: string;
 }
 
-const VARIANT = {
-  minimal: "hidden",
-};
-
 // Category label
 
 const CATEGORY = {
@@ -86,10 +82,10 @@ export default function Card({
   const categoryConfig = CATEGORY[category] ?? CATEGORY.article;
   // const crowdClass = CROWD[crowds] ?? CROWD.high;
   const CategoryIcon = categoryConfig.Icon;
-  const VariantMinimal = VARIANT[variant];
+  const isMinimal = variant === "minimal";
 
   return (
-    <div className="group/card shadow-md rounded-3xl bg-white max-w-[352px] h-full flex flex-col my-4 border border-rg-black-10 transition-all duration-300 hover:border-rg-primary-burgundy/40 hover:shadow-[0_0_30px_-10px_rgba(139,21,56,0.3)]">
+    <div className="group/card shadow-md rounded-3xl bg-white w-[352px] h-full flex flex-col my-4 border border-rg-black-10 transition-all duration-300 hover:border-rg-primary-burgundy/40 hover:shadow-[0_0_30px_-10px_rgba(139,21,56,0.3)]">
       <Link href={`/${category}s/${slug}`}>
         <div className="capitalize relative">
           <div className="relative rounded-t-3xl overflow-hidden h-[240px]">
@@ -113,14 +109,14 @@ export default function Card({
         </div>
       </Link>
       <div className="px-4 mt-4 mb-2">
-        <div
-          className={`flex justify-between items-center mb-1 ${VariantMinimal}`}
-        >
-          <div className="flex flex-row gap-2 text-rg-black-50 text-sm">
-            <p>{location}</p>
+        {!isMinimal && (
+          <div className="flex justify-between items-center mb-1">
+            <div className="flex flex-row gap-2 text-rg-black-50 text-sm">
+              <p>{location}</p>
+            </div>
+            <RatingBadge rating={rating} peopleRating={peopleRating} />
           </div>
-          <RatingBadge rating={rating} peopleRating={peopleRating} />
-        </div>
+        )}
         <div>
           <Link href={`/${category}s/${slug}`}>
             <h3
@@ -130,9 +126,11 @@ export default function Card({
               {title}
             </h3>
           </Link>
-          <p className="text-sm text-rg-black-70 mb-1 line-clamp-2">
-            {description}
-          </p>
+          {!isMinimal && (
+            <p className="text-sm text-rg-black-70 mb-1 line-clamp-2">
+              {description}
+            </p>
+          )}
         </div>
         {duration && numberVisitors && (
           <div className="flex justify-between py-3 mb-2 text-sm">

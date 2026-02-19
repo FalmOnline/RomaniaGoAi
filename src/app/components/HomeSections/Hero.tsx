@@ -3,8 +3,8 @@
 import React from "react";
 // import HeroSearchV1 from "./HeroSearchV1";
 import HeroSearchV2 from "./HeroSearchV2";
-import HeroSearchOld from "./HeroSearch-Old";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 export default function Hero() {
   return (
@@ -36,8 +36,39 @@ export default function Hero() {
         </motion.p>
       </div>
       {/* <HeroSearchV1 /> */}
-            <HeroSearchV2 />
-
+      <HeroSearchV2 />
+      <Image
+        className="absolute top-0 -z-10 left-48"
+        src="/images/romburi-traditionale-romanesti.svg"
+        width={200}
+        height={787}
+        alt="romburi traditionale romanesti"
+      />
+      <div className="absolute top-36 -z-50 right-4">
+        <Image
+          className=""
+          src="/images/cerc.svg"
+          width={500}
+          height={500}
+          alt="romburi traditionale romanesti"
+        />
+         <div className="absolute top-10 right-0 w-[500px] flex flex-col items-center">
+           <Image
+            className=""
+            src="/images/traditional-house.png"
+            width={143}
+            height={154}
+            alt="traditional romanian house"
+                   />
+            <Image
+            className="relative right-44 -mt-4"
+            src="/images/path.svg"
+            width={358}
+            height={362}
+            alt="path"
+                   />
+         </div>
+      </div>
     </div>
   );
 }

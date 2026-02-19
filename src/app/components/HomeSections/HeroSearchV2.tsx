@@ -114,6 +114,7 @@ const CarouselRow: React.FC<CarouselRowProps> = ({
               numberVisitors={item.numberVisitors || ""}
               tags={item.tags}
               slug={item.slug}
+              variant="minimal"
             />
           </div>
         ))}
@@ -135,15 +136,9 @@ export default function HeroSearchV2({ onAttractionClick }: HeroSectionProps) {
     const fetchSuggestions = async () => {
       try {
         const [attractionsRes, eventsRes, articlesRes] = await Promise.all([
-          fetch("http://localhost:5000/api/attractions", {
-            next: { revalidate: 60 },
-          }),
-          fetch("http://localhost:5000/api/events", {
-            next: { revalidate: 60 },
-          }),
-          fetch("http://localhost:5000/api/articles", {
-            next: { revalidate: 60 },
-          }),
+          fetch("http://localhost:5000/api/attractions"),
+          fetch("http://localhost:5000/api/events"),
+          fetch("http://localhost:5000/api/articles"),
         ]);
 
         const [attractions, events, articles] = await Promise.all([
@@ -251,9 +246,9 @@ export default function HeroSearchV2({ onAttractionClick }: HeroSectionProps) {
   const row2 = suggestionRows.slice(9, 18);
 
   return (
-    <div className="min-h-screen bg-[#faf7f2] relative overflow-hidden">
+    <div className="min-h-screen relative overflow-hidden">
       {/* 🔍 Search Bar */}
-      <div className="relative z-10 pb-2 px-4">
+      <div className="relative z-40 pb-2 px-4">
         <div className="max-w-8xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -339,6 +334,7 @@ export default function HeroSearchV2({ onAttractionClick }: HeroSectionProps) {
                         numberVisitors={item.numberVisitors || ""}
                         tags={item.tags}
                         slug={item.slug}
+                        variant="minimal"
                       />
                     ))}
                   </div>
